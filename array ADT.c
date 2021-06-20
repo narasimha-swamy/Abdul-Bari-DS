@@ -8,6 +8,7 @@ struct Array
     int size;
 };
 
+// Display the given array
 void Display(struct Array *array)
 {
     printf("Displaying the elements\n");
@@ -17,12 +18,14 @@ void Display(struct Array *array)
     }
 }
 
+// append/add item at the end
 void Append(struct Array *array, int item)
 {
     if (array->length < array->size)
         array->A[array->length++] = item;
 }
 
+// Insert item at a given index
 void Insert(struct Array *array, int item, int index)
 {
     if (index >= 0 && index <= array->length)
@@ -36,6 +39,7 @@ void Insert(struct Array *array, int item, int index)
     }
 }
 
+// Delete item at a given index
 int Delete(struct Array *array, int index)
 {
     int item = array->A[index];
@@ -52,6 +56,7 @@ int Delete(struct Array *array, int index)
     return -1;
 }
 
+// Swap two elements
 void Swap(int *a, int *b)
 {
     int temp;
@@ -60,6 +65,11 @@ void Swap(int *a, int *b)
     *b = temp;
 }
 
+/* 
+    search item one by one
+    Time - O(n)
+    Space- O(1)
+*/
 int LinearSearch(struct Array *array, int key)
 {
     for (int i = 0; i < array->length; i++)
@@ -76,6 +86,12 @@ int LinearSearch(struct Array *array, int key)
     return -1;
 }
 
+/*
+    Sorted array
+    Recursive Binary Search
+    Time - O(logn) - O(lognbase2)
+    Space- O(logn) - O(lognbase2)
+*/
 int RBinarySearch(struct Array *array, int l, int h, int key)
 {
     int mid = (l + h) / 2;
@@ -97,6 +113,12 @@ int RBinarySearch(struct Array *array, int l, int h, int key)
     return -1;
 }
 
+/*
+    Sorted array
+    Binary Search
+    Time - O(logn) - O(lognbase2)
+    Space- O(1)
+*/
 int BinarySearch(struct Array *array, int key)
 {
     int l = 0;
@@ -121,6 +143,9 @@ int BinarySearch(struct Array *array, int key)
     return -1;
 }
 
+/*
+    Get Element at given index 
+*/
 int Get(struct Array *array, int index)
 {
     if (index >= 0 && index < array->length)
@@ -129,12 +154,18 @@ int Get(struct Array *array, int index)
     return -1;
 }
 
+/*
+    Set the Element at given index to given item
+*/
 int Set(struct Array *array, int index, int item)
 {
     if (index >= 0 && index < array->length)
         array->A[index] = item;
 }
 
+/*
+    Find max value of an array
+*/
 int Max(struct Array *array)
 {
     int max = array->A[0];
@@ -148,6 +179,9 @@ int Max(struct Array *array)
     return max;
 }
 
+/*
+    Find min value of an array
+*/
 int Min(struct Array *array)
 {
     int min = array->A[0];
@@ -161,6 +195,9 @@ int Min(struct Array *array)
     return min;
 }
 
+/*
+    Find sum of all elements in an array
+*/
 int Sum(struct Array *array)
 {
     int sum = 0;
@@ -169,11 +206,17 @@ int Sum(struct Array *array)
     return sum;
 }
 
+/*
+    Find avg value of an array
+*/
 float Avg(struct Array *array)
 {
     return (float)Sum(array) / array->length;
 }
 
+/*
+    Reversing an array
+*/
 void Reverse(struct Array *array)
 {
     int i = 0;
@@ -186,6 +229,7 @@ void Reverse(struct Array *array)
         j--;
     }
 }
+
 
 void LeftRotate(struct Array *array)
 {
@@ -206,6 +250,9 @@ void LeftShift(struct Array *array)
     array->length--;
 }
 
+/*
+    Insert element in a sorted array
+*/
 void InsertSort(struct Array *array, int item)
 {
     int i = array->length - 1;
@@ -220,6 +267,9 @@ void InsertSort(struct Array *array, int item)
     array->length++;
 }
 
+/*
+    Check if the array is sorted
+*/
 int IsSorted(struct Array *array)
 {
     int i = 0;
@@ -251,6 +301,9 @@ void Rearrange(struct Array *array)
     }
 }
 
+/*
+    Merge two sorted arrays
+*/
 struct Array *Merge(struct Array *arr1, struct Array *arr2)
 {
     int i = 0, j = 0, k = 0;
@@ -275,6 +328,13 @@ struct Array *Merge(struct Array *arr1, struct Array *arr2)
     return arr3;
 }
 
+/*
+    Union of two arrays
+    sorted
+        Time - O(n)
+    unsorted
+        Time - O(n^2)
+*/
 struct Array *Union(struct Array *arr1, struct Array *arr2)
 {
     struct Array *arr3 = malloc(sizeof(struct Array));
@@ -329,6 +389,13 @@ struct Array *Union(struct Array *arr1, struct Array *arr2)
     return arr3;
 }
 
+/*
+    Intersection of two arrays
+    sorted
+        Time - O(n)
+    unsorted
+        Time - O(n^2)
+*/
 struct Array *Intersection(struct Array *arr1, struct Array *arr2)
 {
     struct Array *arr3 = malloc(sizeof(struct Array));
@@ -371,6 +438,14 @@ struct Array *Intersection(struct Array *arr1, struct Array *arr2)
     return arr3;
 }
 
+/*
+    Difference of two arrays
+     = A - B
+    sorted
+        Time - O(n)
+    unsorted
+        Time - O(n^2)
+*/
 struct Array *Difference(struct Array *arr1, struct Array *arr2)
 {
     struct Array *arr3 = malloc(sizeof(struct Array));
